@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Emergency Response | Report. Respond. Protect.</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Smart Emergency Response is a modern emergency reporting, incident tracking, emergency service discovery and safety information platform.">
+  <meta name="keywords" content="Emergency, Incident Management, Police, Fire, Ambulance, Disaster, Safety, Civic Response">
+  <meta name="author" content="Smart Emergency Response">
+  
+  <meta property="og:title" content="Smart Emergency Response | Report. Respond. Protect.">
+  <meta property="og:description" content="A digital platform designed to help citizens quickly report emergencies, discover nearby emergency services, and access critical safety information.">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  
+  <!-- Font Awesome 6.5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Leaflet 1.9 CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       EMERGENCY CIVIC ADVISORY TOPBAR
+       ======================================================================== -->
+  <div class="emergency-topbar text-center py-2 px-3">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div class="d-flex align-items-center">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span><strong>CRITICAL ADVISORY:</strong> In case of immediate life threat, call national emergency hotline <a href="tel:112">112</a> immediately.</span>
+      </div>
+      <div class="d-none d-md-flex align-items-center gap-3">
+        <span><i class="fa-solid fa-clock me-1"></i> System Status: <strong class="text-white">Active Dispatch</strong></span>
+        <span><i class="fa-solid fa-satellite-dish me-1"></i> Mode: <strong>Frontend Static</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       HEADER / NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-lg ser-navbar" id="serNavbar" aria-label="Main Navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">
+        <img src="assets/images/logo.svg" alt="SER Logo" class="brand-logo-img">
+        <span>Smart Emergency Response</span>
+        <span class="brand-badge">SER</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 order-lg-3">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" type="button" title="Toggle Theme" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon" id="themeToggleIcon"></i>
+        </button>
+
+        <!-- Emergency Help Button -->
+        <button class="btn btn-emergency-help" type="button" data-bs-toggle="modal" data-bs-target="#emergencyDialModal">
+          <i class="fa-solid fa-phone-volume"></i>
+          <span>Emergency Help</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="navbar-toggler border-0 p-1 ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars fs-4 text-primary"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#report-section">Report Emergency</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services-section">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#map-section">Map</a></li>
+          <li class="nav-item"><a class="nav-link" href="#stats-section">Statistics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#track-section">Track Report</a></li>
+          <li class="nav-item"><a class="nav-link" href="#safety-section">Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dispatch-section">Response Center</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ========================================================================
+         HERO SECTION
+         ======================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="hero-pill">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Official Citizen Incident Assistance Portal</span>
+            </div>
+            <h1 class="hero-title">
+              Smart <span class="highlight-red">Emergency Response</span>
+            </h1>
+            <div class="hero-tagline">
+              <i class="fa-solid fa-bullhorn me-2"></i>Report. Respond. Protect.
+            </div>
+            <p class="hero-lead">
+              A digital platform designed to help citizens quickly report emergencies, discover nearby emergency services, and access critical safety information in real time.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#report-section" class="btn btn-cta-primary">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Report an Emergency</span>
+              </a>
+              <a href="#map-section" class="btn btn-cta-secondary">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Find Emergency Services</span>
+              </a>
+            </div>
+
+            <div class="d-flex align-items-center gap-4 text-muted small mt-2">
+              <div><i class="fa-solid fa-bolt text-warning me-1"></i> Instant rule-based priority</div>
+              <div><i class="fa-solid fa-location-crosshairs text-primary me-1"></i> GPS-assisted location</div>
+              <div><i class="fa-solid fa-lock text-success me-1"></i> 100% Client-Side Private</div>
+            </div>
+          </div>
+
+          <!-- Hero Visual: Simulated Emergency Dispatch Radar & Feed -->
+          <div class="col-lg-5 mt-4 mt-lg-0">
+            <div class="hero-visual-card">
+              <div class="dispatch-header">
+                <div>
+                  <div class="fw-bold fs-6">Active Command Radar</div>
+                  <small class="text-muted">Simulated Grid Sector 4</small>
+                </div>
+                <span class="dispatch-live-tag">
+                  <i class="fa-solid fa-circle fa-beat" style="font-size: 8px;"></i> LIVE UNITS
+                </span>
+              </div>
+
+              <div class="radar-screen">
+                <div class="radar-circle c1"></div>
+                <div class="radar-circle c2"></div>
+                <div class="radar-circle c3"></div>
+                <div class="radar-sweep"></div>
+                <!-- Dynamic Simulated Unit Pins -->
+                <div class="radar-pin ambulance" title="Ambulance Unit A-12"></div>
+                <div class="radar-pin fire" title="Fire Tender F-04"></div>
+                <div class="radar-pin police" title="Police Patrol P-09"></div>
+
+                <div class="text-center z-3 position-relative">
+                  <div class="badge bg-danger mb-1 px-3 py-1">24/7 Citizen Sentinel</div>
+                  <div class="text-white small fw-bold">Emergency Dispatch Network</div>
+                </div>
+              </div>
+
+              <div class="dispatch-status-grid">
+                <div class="status-mini-card">
+                  <div class="val text-danger" id="heroStatActive">3</div>
+                  <div class="lbl">Active Crises</div>
+                </div>
+                <div class="status-mini-card">
+                  <div class="val text-success" id="heroStatUnits">18</div>
+                  <div class="lbl">Ready Units</div>
+                </div>
+                <div class="status-mini-card">
+                  <div class="val text-primary">4.2 min</div>
+                  <div class="lbl">Avg Response</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EMERGENCY QUICK ACTIONS
+         ======================================================================== -->
+    <section class="quick-actions-section" aria-label="Emergency Quick Actions">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+          <div>
+            <h5 class="fw-bold mb-0 text-primary"><i class="fa-solid fa-bolt-lightning text-danger me-2"></i>Immediate Quick Actions</h5>
+            <small class="text-muted">Select an emergency category to initiate a prioritized report immediately</small>
+          </div>
+          <span class="badge bg-light text-secondary border">Click to fast-track form</span>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="quick-action-card qa-medical" data-category="Medical Emergency">
+              <div class="quick-action-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="quick-action-title">Medical</div>
+              <div class="quick-action-sub">Ambulance & Trauma</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="quick-action-card qa-fire" data-category="Fire Emergency">
+              <div class="quick-action-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+              <div class="quick-action-title">Fire</div>
+              <div class="quick-action-sub">Blaze & Rescue</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="quick-action-card qa-police" data-category="Public Safety">
+              <div class="quick-action-icon"><i class="fa-solid fa-shield-cat"></i></div>
+              <div class="quick-action-title">Police</div>
+              <div class="quick-action-sub">Law & Order</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="quick-action-card qa-electric" data-category="Electrical Emergency">
+              <div class="quick-action-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+              <div class="quick-action-title">Electrical</div>
+              <div class="quick-action-sub">Live Wire / Short</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="quick-action-card qa-road" data-category="Infrastructure Hazard">
+              <div class="quick-action-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="quick-action-title">Infrastructure</div>
+              <div class="quick-action-sub">Road / Collapse</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="quick-action-card qa-disaster" data-category="Natural Disaster">
+              <div class="quick-action-icon"><i class="fa-solid fa-cloud-bolt"></i></div>
+              <div class="quick-action-title">Disaster</div>
+              <div class="quick-action-sub">Flood / Cyclone</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EMERGENCY REPORTING SYSTEM
+         ======================================================================== -->
+    <section class="section-wrapper" id="report-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-pen-to-square"></i> Instant Incident Dispatch</span>
+          <h2 class="section-title">Report an Emergency</h2>
+          <p class="section-subtitle">
+            Provide accurate details. Our client-side Smart Priority Engine evaluates immediate danger and people affected to assign urgency automatically.
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="report-card">
+              <!-- Smart Priority Engine Preview Bar -->
+              <div class="priority-preview-bar" id="priorityPreviewBar">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="text-muted fw-bold small text-uppercase">Smart Priority Engine:</span>
+                  <div class="priority-badge-live p-medium" id="priorityBadgeDisplay">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span id="priorityTextDisplay">Medium Priority</span>
+                  </div>
+                </div>
+                <div class="priority-explanation" id="priorityReasonDisplay">
+                  Reason: Standard severity level evaluation.
+                </div>
+              </div>
+
+              <!-- Report Form -->
+              <form id="emergencyReportForm" novalidate>
+                <div class="row g-3">
+                  <!-- Category -->
+                  <div class="col-md-6">
+                    <label for="reportCategory" class="form-label">
+                      Emergency Category <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="reportCategory" required>
+                      <option value="" disabled selected>Select emergency category</option>
+                      <option value="Road Accident">🚗 Road Accident</option>
+                      <option value="Fire Emergency">🔥 Fire Emergency</option>
+                      <option value="Medical Emergency">🚑 Medical Emergency</option>
+                      <option value="Public Safety">👮 Public Safety & Crime</option>
+                      <option value="Electrical Emergency">⚡ Electrical Emergency</option>
+                      <option value="Water Emergency">💧 Water Emergency / Flooding</option>
+                      <option value="Infrastructure Hazard">🚧 Infrastructure Hazard</option>
+                      <option value="Natural Disaster">🌪️ Natural Disaster</option>
+                      <option value="Missing Person">🔍 Missing Person</option>
+                      <option value="Other Emergency">⚠️ Other Emergency</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an emergency category.</div>
+                  </div>
+
+                  <!-- Severity -->
+                  <div class="col-md-6">
+                    <label for="reportSeverity" class="form-label">
+                      Initial Severity Level <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select" id="reportSeverity" required>
+                      <option value="Low">🟢 Low - Non-critical / Caution</option>
+                      <option value="Medium" selected>🟡 Medium - Urgent assistance needed</option>
+                      <option value="High">🟠 High - Severe threat / escalation risk</option>
+                      <option value="Critical">🔴 Critical - Extreme threat to life / property</option>
+                    </select>
+                  </div>
+
+                  <!-- Emergency Title -->
+                  <div class="col-12">
+                    <label for="reportTitle" class="form-label">
+                      Emergency Title / Short Summary <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" id="reportTitle" placeholder="e.g. Multi-vehicle collision near MG Road Flyover" required maxlength="120">
+                    <div class="invalid-feedback">Please provide a descriptive title for the incident.</div>
+                  </div>
+
+                  <!-- Description -->
+                  <div class="col-12">
+                    <label for="reportDescription" class="form-label">
+                      Detailed Incident Description <span class="text-danger">*</span>
+                    </label>
+                    <textarea class="form-control" id="reportDescription" rows="3" placeholder="Describe the situation, landmarks, trapped individuals, fire spread, or potential hazards..." required></textarea>
+                    <div class="invalid-feedback">Please provide incident details.</div>
+                  </div>
+
+                  <!-- People Affected -->
+                  <div class="col-md-6">
+                    <label for="reportAffected" class="form-label">
+                      Estimated People Affected <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-surface"><i class="fa-solid fa-users"></i></span>
+                      <input type="number" class="form-control" id="reportAffected" value="1" min="0" max="500" required>
+                    </div>
+                    <small class="text-muted">Affects priority calculations (≥3 High, ≥5 Critical).</small>
+                  </div>
+
+                  <!-- Immediate Danger -->
+                  <div class="col-md-6">
+                    <label class="form-label d-block">
+                      Immediate Threat to Life? <span class="text-danger">*</span>
+                    </label>
+                    <div class="radio-pill-group">
+                      <input type="radio" class="form-check-input" name="immediateDanger" id="dangerNo" value="No" checked>
+                      <label class="radio-pill-label" for="dangerNo">
+                        <i class="fa-solid fa-shield me-1"></i> No immediate threat
+                      </label>
+
+                      <input type="radio" class="form-check-input" name="immediateDanger" id="dangerYes" value="Yes">
+                      <label class="radio-pill-label text-danger" for="dangerYes">
+                        <i class="fa-solid fa-skull-crossbones me-1"></i> Yes, Active Danger!
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Location -->
+                  <div class="col-12">
+                    <label for="reportLocation" class="form-label">
+                      Incident Location / Address <span class="text-danger">*</span>
+                    </label>
+                    <div class="location-btn-group">
+                      <div class="input-group">
+                        <span class="input-group-text bg-surface"><i class="fa-solid fa-location-dot text-danger"></i></span>
+                        <input type="text" class="form-control" id="reportLocation" placeholder="Enter landmark, street, city or use GPS button" required>
+                      </div>
+                      <button type="button" class="btn btn-locate-me" id="btnUseMyLocation">
+                        <i class="fa-solid fa-crosshairs"></i>
+                        <span>Use My Location</span>
+                      </button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                      <div class="small text-muted" id="geoCoordsText">GPS Coordinates: Not detected</div>
+                      <div class="invalid-feedback d-block" id="locationErrorFeedback" style="display:none !important;">Please provide a location.</div>
+                    </div>
+                    <!-- Hidden Lat/Lng Storage -->
+                    <input type="hidden" id="reportLat" value="">
+                    <input type="hidden" id="reportLng" value="">
+                  </div>
+
+                  <!-- Reporter Contact (Optional) -->
+                  <div class="col-md-6">
+                    <label for="reportContact" class="form-label">
+                      Reporter Contact Number <small class="text-muted">(Optional)</small>
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-surface"><i class="fa-solid fa-phone"></i></span>
+                      <input type="tel" class="form-control" id="reportContact" placeholder="+91 98765 43210" pattern="[0-9+ -]{7,16}">
+                    </div>
+                    <small class="text-muted">Used solely by emergency dispatchers to reach you.</small>
+                  </div>
+
+                  <!-- Reporter Name (Optional) -->
+                  <div class="col-md-6">
+                    <label for="reportName" class="form-label">
+                      Reporter Name <small class="text-muted">(Optional)</small>
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text bg-surface"><i class="fa-solid fa-user"></i></span>
+                      <input type="text" class="form-control" id="reportName" placeholder="Anonymous or Citizen Name">
+                    </div>
+                  </div>
+
+                  <!-- Image Upload (Optional) -->
+                  <div class="col-12">
+                    <label class="form-label">
+                      Incident Scene Image <small class="text-muted">(Optional, max 2MB, JPG/PNG)</small>
+                    </label>
+                    <div class="upload-dropzone" id="uploadDropzone">
+                      <input type="file" id="reportImage" accept="image/jpeg,image/png,image/webp">
+                      <div class="dropzone-text">
+                        <i class="fa-solid fa-cloud-arrow-up fs-2 text-primary mb-2"></i>
+                        <p class="mb-0 fw-bold">Click or drag an image here to upload</p>
+                        <small class="text-muted">Helps responders assess severity visually</small>
+                      </div>
+                    </div>
+
+                    <!-- Image Preview Container -->
+                    <div class="image-preview-container d-none" id="imagePreviewContainer">
+                      <img src="" alt="Incident Preview" id="imagePreviewThumb" class="image-preview-thumb">
+                      <div class="flex-grow-1">
+                        <div class="fw-bold small" id="imagePreviewName">image.jpg</div>
+                        <small class="text-muted" id="imagePreviewSize">0 KB</small>
+                      </div>
+                      <button type="button" class="btn btn-sm btn-outline-danger" id="btnClearImage">
+                        <i class="fa-solid fa-trash-can"></i> Remove
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Submit CTA -->
+                  <div class="col-12 mt-4 text-center">
+                    <button type="submit" class="btn btn-cta-primary btn-lg px-5 w-100 w-md-auto" id="btnSubmitReport">
+                      <i class="fa-solid fa-paper-plane me-2"></i>
+                      <span>Submit Emergency Report</span>
+                    </button>
+                    <div class="small text-muted mt-2">
+                      <i class="fa-solid fa-circle-info me-1"></i> Submissions are stored locally in your browser and automatically update the live dispatcher feed.
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         REPORT TRACKING & RESPONSE TIMELINE
+         ======================================================================== -->
+    <section class="section-wrapper bg-alt" id="track-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-magnifying-glass-location"></i> Citizen Transparency</span>
+          <h2 class="section-title">Track Your Emergency Report</h2>
+          <p class="section-subtitle">
+            Enter your Incident ID to inspect real-time response stages, dispatcher verification, responder unit assignments, and resolution notes.
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="track-card">
+              <!-- Search Bar -->
+              <form id="trackSearchForm" class="track-search-bar">
+                <input type="text" class="form-control form-control-lg" id="trackIncidentId" placeholder="Enter Incident ID (e.g. SER-2026-10482)" required>
+                <button type="submit" class="btn btn-cta-primary px-4">
+                  <i class="fa-solid fa-magnifying-glass me-2"></i> Track
+                </button>
+              </form>
+
+              <!-- Quick Demo Incident Chips -->
+              <div class="quick-id-chips">
+                <span class="small fw-bold text-muted me-2">Try Demo Incidents:</span>
+                <button type="button" class="chip-btn" data-track-id="SER-2026-10482">SER-2026-10482 (Fire)</button>
+                <button type="button" class="chip-btn" data-track-id="SER-2026-10483">SER-2026-10483 (Accident)</button>
+                <button type="button" class="chip-btn" data-track-id="SER-2026-10484">SER-2026-10484 (Electric)</button>
+              </div>
+
+              <!-- Tracking Results Container -->
+              <div id="trackingResultBox" class="mt-4">
+                <!-- Populated dynamically via script.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EMERGENCY SERVICES DIRECTORY
+         ======================================================================== -->
+    <section class="section-wrapper" id="services-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-hand-holding-medical"></i> Quick Response Network</span>
+          <h2 class="section-title">Emergency Services</h2>
+          <p class="section-subtitle">
+            Direct hotlines and dispatch coordinators for civic safety, healthcare, rescue, and disaster mitigation teams.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Ambulance -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card sc-ambulance">
+              <div>
+                <div class="service-header">
+                  <div class="service-icon"><i class="fa-solid fa-truck-medical text-success"></i></div>
+                  <div>
+                    <h3 class="service-title">Ambulance & Trauma</h3>
+                    <div class="service-helpline"><i class="fa-solid fa-phone me-1"></i>108 / 102</div>
+                  </div>
+                </div>
+                <p class="service-desc">
+                  Rapid paramedic deployment, advanced life support (ALS), cardiac response units, and emergency patient transport to trauma centers.
+                </p>
+              </div>
+              <div class="service-actions">
+                <a href="tel:108" class="btn btn-service-call"><i class="fa-solid fa-phone"></i> Call 108</a>
+                <button type="button" class="btn btn-service-map" data-filter-map="hospital"><i class="fa-solid fa-map-pin"></i> View Map</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fire -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card sc-fire">
+              <div>
+                <div class="service-header">
+                  <div class="service-icon"><i class="fa-solid fa-fire-extinguisher text-danger"></i></div>
+                  <div>
+                    <h3 class="service-title">Fire Department</h3>
+                    <div class="service-helpline"><i class="fa-solid fa-phone me-1"></i>101</div>
+                  </div>
+                </div>
+                <p class="service-desc">
+                  Urban and industrial firefighting, structural collapse rescue, hazmat neutralization, and high-rise evacuation operations.
+                </p>
+              </div>
+              <div class="service-actions">
+                <a href="tel:101" class="btn btn-service-call"><i class="fa-solid fa-phone"></i> Call 101</a>
+                <button type="button" class="btn btn-service-map" data-filter-map="fire"><i class="fa-solid fa-map-pin"></i> View Map</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Police -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card sc-police">
+              <div>
+                <div class="service-header">
+                  <div class="service-icon"><i class="fa-solid fa-shield-halved text-primary"></i></div>
+                  <div>
+                    <h3 class="service-title">Police / Public Safety</h3>
+                    <div class="service-helpline"><i class="fa-solid fa-phone me-1"></i>100 / 112</div>
+                  </div>
+                </div>
+                <p class="service-desc">
+                  Crime deterrence, civil disturbance response, highway patrols, traffic accident management, and citizen protection details.
+                </p>
+              </div>
+              <div class="service-actions">
+                <a href="tel:100" class="btn btn-service-call"><i class="fa-solid fa-phone"></i> Call 100</a>
+                <button type="button" class="btn btn-service-map" data-filter-map="police"><i class="fa-solid fa-map-pin"></i> View Map</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hospitals -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card sc-ambulance">
+              <div>
+                <div class="service-header">
+                  <div class="service-icon"><i class="fa-solid fa-hospital text-info"></i></div>
+                  <div>
+                    <h3 class="service-title">Government & Trauma Hospitals</h3>
+                    <div class="service-helpline"><i class="fa-solid fa-phone me-1"></i>112 / 108</div>
+                  </div>
+                </div>
+                <p class="service-desc">
+                  24/7 casualty wards, emergency blood banks, surgical triage, intensive care units (ICU), and toxicological treatment.
+                </p>
+              </div>
+              <div class="service-actions">
+                <a href="tel:112" class="btn btn-service-call"><i class="fa-solid fa-phone"></i> Call Emergency</a>
+                <button type="button" class="btn btn-service-map" data-filter-map="hospital"><i class="fa-solid fa-map-pin"></i> View Map</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Electricity -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card sc-power">
+              <div>
+                <div class="service-header">
+                  <div class="service-icon"><i class="fa-solid fa-bolt text-warning"></i></div>
+                  <div>
+                    <h3 class="service-title">Electricity Hazard Dept</h3>
+                    <div class="service-helpline"><i class="fa-solid fa-phone me-1"></i>1912</div>
+                  </div>
+                </div>
+                <p class="service-desc">
+                  Downed live transmission wires, transformer explosions, power station fires, and emergency regional grid de-energization.
+                </p>
+              </div>
+              <div class="service-actions">
+                <a href="tel:1912" class="btn btn-service-call"><i class="fa-solid fa-phone"></i> Call 1912</a>
+                <button type="button" class="btn btn-service-map" data-filter-map="all"><i class="fa-solid fa-map-pin"></i> View Map</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Disaster Management -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card sc-disaster">
+              <div>
+                <div class="service-header">
+                  <div class="service-icon"><i class="fa-solid fa-life-ring text-secondary"></i></div>
+                  <div>
+                    <h3 class="service-title">Disaster Management (NDRF)</h3>
+                    <div class="service-helpline"><i class="fa-solid fa-phone me-1"></i>1070 / 1078</div>
+                  </div>
+                </div>
+                <p class="service-desc">
+                  Flood rescues, cyclone shelters, landslide clearing, earthquake recovery operations, and national disaster relief logistics.
+                </p>
+              </div>
+              <div class="service-actions">
+                <a href="tel:1070" class="btn btn-service-call"><i class="fa-solid fa-phone"></i> Call 1070</a>
+                <button type="button" class="btn btn-service-map" data-filter-map="all"><i class="fa-solid fa-map-pin"></i> View Map</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-light border mt-4 text-center small text-muted">
+          <i class="fa-solid fa-circle-info text-primary me-2"></i>
+          <strong>Notice:</strong> Helplines listed represent recognized Indian national and municipal emergency lines. Please confirm local district availability.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         INTERACTIVE EMERGENCY MAP
+         ======================================================================== -->
+    <section class="section-wrapper bg-alt" id="map-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-earth-americas"></i> Geospatial Intelligence</span>
+          <h2 class="section-title">Interactive Emergency Map</h2>
+          <p class="section-subtitle">
+            Explore nearby response stations, trauma centers, and active emergency incident points using Leaflet and OpenStreetMap.
+          </p>
+        </div>
+
+        <div class="map-container-wrapper">
+          <div class="map-controls-bar">
+            <div class="map-filter-group">
+              <button type="button" class="btn-map-filter active" data-map-layer="all">All Points</button>
+              <button type="button" class="btn-map-filter" data-map-layer="hospital"><i class="fa-solid fa-hospital text-success me-1"></i> Hospitals</button>
+              <button type="button" class="btn-map-filter" data-map-layer="police"><i class="fa-solid fa-shield text-primary me-1"></i> Police</button>
+              <button type="button" class="btn-map-filter" data-map-layer="fire"><i class="fa-solid fa-fire text-danger me-1"></i> Fire Stations</button>
+              <button type="button" class="btn-map-filter" data-map-layer="incident"><i class="fa-solid fa-circle-exclamation text-danger me-1"></i> Active Incidents</button>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <button type="button" class="btn btn-sm btn-outline-primary" id="btnMapCenterUser">
+                <i class="fa-solid fa-location-crosshairs me-1"></i> Find My Position
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btnMapReset">
+                <i class="fa-solid fa-rotate-left me-1"></i> Reset View
+              </button>
+            </div>
+          </div>
+
+          <!-- Leaflet Canvas Container -->
+          <div id="emergencyMap" role="region" aria-label="Interactive Map of Emergency Services"></div>
+        </div>
+
+        <div class="d-flex justify-content-between flex-wrap gap-2 text-muted small mt-2 px-1">
+          <div><i class="fa-solid fa-circle-info text-info me-1"></i> Click any pin to view emergency contact options and instant directions.</div>
+          <div>Powered by <strong>Leaflet.js</strong> &amp; <strong>OpenStreetMap</strong> (No API keys required)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EMERGENCY STATISTICS & ANALYTICS
+         ======================================================================== -->
+    <section class="section-wrapper" id="stats-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-chart-line"></i> Civic Metrics</span>
+          <h2 class="section-title">Emergency Statistics &amp; Analytics</h2>
+          <p class="section-subtitle">
+            Live client-side telemetry calculated from demo records and user submissions stored in browser memory.
+          </p>
+        </div>
+
+        <!-- Metric Counter Cards -->
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-lg-3">
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon sci-total"><i class="fa-solid fa-folder-open"></i></div>
+              <div>
+                <div class="stat-val" id="statTotalReports">0</div>
+                <div class="stat-lbl">Total Incidents</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon sci-active"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div>
+                <div class="stat-val text-danger" id="statActiveEmergencies">0</div>
+                <div class="stat-lbl">Active Crises</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon sci-resolved"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <div class="stat-val text-success" id="statResolvedReports">0</div>
+                <div class="stat-lbl">Resolved Cases</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon sci-speed"><i class="fa-solid fa-stopwatch"></i></div>
+              <div>
+                <div class="stat-val text-primary" id="statAvgResponse">7.8m</div>
+                <div class="stat-lbl">Avg Response Time</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid (Chart.js) -->
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title"><i class="fa-solid fa-chart-pie text-danger me-2"></i>By Category</h3>
+                <span class="chart-tag">Incidents</span>
+              </div>
+              <div style="position: relative; height: 280px;">
+                <canvas id="categoryChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title"><i class="fa-solid fa-chart-simple text-primary me-2"></i>Status Breakdown</h3>
+                <span class="chart-tag">Workflow</span>
+              </div>
+              <div style="position: relative; height: 280px;">
+                <canvas id="statusChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title"><i class="fa-solid fa-wave-square text-success me-2"></i>Monthly Trends</h3>
+                <span class="chart-tag">Trend</span>
+              </div>
+              <div style="position: relative; height: 280px;">
+                <canvas id="trendChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <small class="text-muted"><i class="fa-solid fa-database me-1"></i> Data automatically synchronizes when new incident reports are generated or updated.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         DEMO RESPONSE CENTER (DISPATCHER PANEL)
+         ======================================================================== -->
+    <section class="section-wrapper bg-alt" id="dispatch-section">
+      <div class="container">
+        <div class="dispatch-panel-card">
+          <div class="dispatch-panel-header">
+            <div>
+              <h2 class="dispatch-panel-title">
+                <i class="fa-solid fa-tower-broadcast text-danger"></i>
+                <span>Demo Response Center</span>
+                <span class="demo-mode-pill">Frontend Demo Mode</span>
+              </h2>
+              <small class="text-white-50">Simulated dispatcher console. Change status dropdown to simulate live response workflows.</small>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <button type="button" class="btn btn-sm btn-outline-light" id="btnResetDemoData">
+                <i class="fa-solid fa-arrow-rotate-left me-1"></i> Reset Demo Data
+              </button>
+            </div>
+          </div>
+
+          <!-- Filter & Search Controls -->
+          <div class="dispatch-filter-bar">
+            <div class="row g-2 w-100 align-items-center">
+              <div class="col-md-4">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-surface"><i class="fa-solid fa-search"></i></span>
+                  <input type="text" class="form-control" id="dispatchSearchInput" placeholder="Search ID, title, or location...">
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <select class="form-select form-select-sm" id="dispatchFilterCategory">
+                  <option value="ALL">All Categories</option>
+                  <option value="Fire Emergency">Fire Emergency</option>
+                  <option value="Medical Emergency">Medical Emergency</option>
+                  <option value="Road Accident">Road Accident</option>
+                  <option value="Public Safety">Public Safety</option>
+                  <option value="Electrical Emergency">Electrical Emergency</option>
+                  <option value="Natural Disaster">Natural Disaster</option>
+                </select>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <select class="form-select form-select-sm" id="dispatchFilterPriority">
+                  <option value="ALL">All Priorities</option>
+                  <option value="Critical">Critical (🔴)</option>
+                  <option value="High">High (🟠)</option>
+                  <option value="Medium">Medium (🟡)</option>
+                  <option value="Low">Low (🟢)</option>
+                </select>
+              </div>
+              <div class="col-md-2 text-end">
+                <span class="badge bg-primary px-2 py-2" id="dispatchCountBadge">0 Incidents</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dispatcher Incident Table -->
+          <div class="dispatch-table-responsive">
+            <table class="dispatch-table" id="dispatchTable">
+              <thead>
+                <tr>
+                  <th>Incident ID</th>
+                  <th>Category &amp; Title</th>
+                  <th>Priority</th>
+                  <th>Location</th>
+                  <th>Status &amp; Workflow</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dispatchTableBody">
+                <!-- Dynamically populated via script.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SAFETY INFORMATION & ACCORDION
+         ======================================================================== -->
+    <section class="section-wrapper" id="safety-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-shield-heart"></i> Citizen Preparedness</span>
+          <h2 class="section-title">Safety Guidelines &amp; First Aid</h2>
+          <p class="section-subtitle">
+            Critical, actionable safety protocols for individuals facing emergency hazards before responder units arrive.
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <!-- Search safety tips -->
+            <div class="input-group mb-4 shadow-sm">
+              <span class="input-group-text bg-surface"><i class="fa-solid fa-filter"></i></span>
+              <input type="text" class="form-control" id="safetySearchInput" placeholder="Filter safety topics (e.g. CPR, fire extinguisher, electrical shock, flood)...">
+            </div>
+
+            <!-- Accordion Items -->
+            <div class="accordion safety-accordion" id="safetyAccordion">
+              <!-- 1. Fire Safety -->
+              <div class="accordion-item" data-safety-topic="fire extinguisher smoke burn evacuation">
+                <h3 class="accordion-header" id="headingFire">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFire" aria-expanded="true" aria-controls="collapseFire">
+                    <i class="fa-solid fa-fire text-danger me-2"></i> Fire Safety &amp; Smoke Inhalation
+                  </button>
+                </h3>
+                <div id="collapseFire" class="accordion-collapse collapse show" aria-labelledby="headingFire" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>Crawl low under smoke where air is cleaner.</li>
+                          <li>Feel door handles with the back of your hand before opening.</li>
+                          <li>Use stairs immediately; never use elevators during a fire.</li>
+                          <li>Remember PASS for extinguishers: Pull, Aim, Squeeze, Sweep.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Never re-enter a burning building for belongings.</li>
+                          <li>Never pour water on electrical or grease/oil fires.</li>
+                          <li>Do not open doors that feel hot to the touch.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Install smoke detectors on every floor.</li>
+                          <li>Keep fire extinguisher certified and accessible.</li>
+                          <li>Call <strong>101</strong> immediately once outside safely.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Medical & CPR -->
+              <div class="accordion-item" data-safety-topic="medical cpr cardiac choking bleeding pulse unconscious">
+                <h3 class="accordion-header" id="headingMedical">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMedical" aria-expanded="false" aria-controls="collapseMedical">
+                    <i class="fa-solid fa-heart-pulse text-danger me-2"></i> Medical Emergency, CPR &amp; Choking
+                  </button>
+                </h3>
+                <div id="collapseMedical" class="accordion-collapse collapse" aria-labelledby="headingMedical" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>Check responsiveness and breathing; call <strong>108</strong>.</li>
+                          <li>For CPR: Push hard and fast in center of chest (100–120 bpm).</li>
+                          <li>For severe bleeding: Apply direct continuous pressure with sterile cloth.</li>
+                          <li>For choking: Perform abdominal thrusts (Heimlich maneuver).</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Never give food or liquids to an unconscious person.</li>
+                          <li>Do not remove impaled objects; stabilize them in place.</li>
+                          <li>Do not stop CPR until medical paramedics relieve you.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Keep a certified First Aid kit in home and vehicle.</li>
+                          <li>Know patient allergies and existing medications.</li>
+                          <li>Call <strong>108</strong> or <strong>112</strong> immediately.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Road Accidents -->
+              <div class="accordion-item" data-safety-topic="road vehicle crash accident highway collision helmet airbag">
+                <h3 class="accordion-header" id="headingRoad">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRoad" aria-expanded="false" aria-controls="collapseRoad">
+                    <i class="fa-solid fa-car-burst text-warning me-2"></i> Road Accidents &amp; Highway Collisions
+                  </button>
+                </h3>
+                <div id="collapseRoad" class="accordion-collapse collapse" aria-labelledby="headingRoad" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>Turn on hazard warning lights and place reflective triangles.</li>
+                          <li>Turn off vehicle ignition to eliminate spark/fire hazards.</li>
+                          <li>Check for injuries and maintain a safe barrier from oncoming traffic.</li>
+                          <li>Under Good Samaritan laws, helpers are legally protected.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Do not move victims with suspected spinal injury unless car is on fire.</li>
+                          <li>Do not remove helmets of unconscious motorcycle riders.</li>
+                          <li>Never stand between stopped vehicles on active highways.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Always wear seatbelts and DOT/ISI approved helmets.</li>
+                          <li>Call <strong>108</strong> (Medical) and <strong>100</strong> (Police) simultaneously.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Electrical Hazard -->
+              <div class="accordion-item" data-safety-topic="electrical shock wire transformer power current electrocution">
+                <h3 class="accordion-header" id="headingElectric">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElectric" aria-expanded="false" aria-controls="collapseElectric">
+                    <i class="fa-solid fa-bolt text-warning me-2"></i> Electrical Safety &amp; Shock Protocols
+                  </button>
+                </h3>
+                <div id="collapseElectric" class="accordion-collapse collapse" aria-labelledby="headingElectric" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>Cut main electrical supply at breaker immediately if safe.</li>
+                          <li>Keep at least 35 feet away from downed power lines.</li>
+                          <li>Use dry non-conductive wooden or plastic rods if emergency separation needed.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Never touch a victim who is still in contact with electrical current.</li>
+                          <li>Do not touch water or puddles near downed power lines.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Call power grid emergency line <strong>1912</strong>.</li>
+                          <li>Check for burns and call <strong>108</strong> for emergency medical help.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Floods & Heavy Rain -->
+              <div class="accordion-item" data-safety-topic="flood water rain storm drowning cyclone submerged">
+                <h3 class="accordion-header" id="headingFlood">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFlood" aria-expanded="false" aria-controls="collapseFlood">
+                    <i class="fa-solid fa-cloud-showers-heavy text-info me-2"></i> Flood &amp; Urban Waterlogging Safety
+                  </button>
+                </h3>
+                <div id="collapseFlood" class="accordion-collapse collapse" aria-labelledby="headingFlood" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>Move immediately to higher ground or upper floor.</li>
+                          <li>Turn off main power breaker and gas valves before evacuating.</li>
+                          <li>Drink only boiled or bottled water to prevent waterborne disease.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Never drive through flooded streets (Turn Around, Don't Drown).</li>
+                          <li>Avoid walking in moving floodwaters; 6 inches can sweep you off feet.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Keep waterproof emergency go-bag with documents and medicines.</li>
+                          <li>Contact Disaster Management at <strong>1070</strong>.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. Natural Disasters -->
+              <div class="accordion-item" data-safety-topic="earthquake disaster cyclone tremor rubble shelter">
+                <h3 class="accordion-header" id="headingDisaster">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDisaster" aria-expanded="false" aria-controls="collapseDisaster">
+                    <i class="fa-solid fa-volcano text-danger me-2"></i> Earthquakes &amp; Natural Disasters
+                  </button>
+                </h3>
+                <div id="collapseDisaster" class="accordion-collapse collapse" aria-labelledby="headingDisaster" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>During tremors: <strong>Drop, Cover, and Hold On</strong> under sturdy table.</li>
+                          <li>Protect head and neck with your arms.</li>
+                          <li>If outside, move away from buildings, streetlights, and utility wires.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Do not run outside while shaking is occurring.</li>
+                          <li>Never stand near glass windows, mirrors, or unanchored tall furniture.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Anchor heavy appliances to wall studs.</li>
+                          <li>Follow official NDMA / NDRF emergency broadcast advisories.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 7. Personal Safety -->
+              <div class="accordion-item" data-safety-topic="personal crime stalking harassment assault defense theft">
+                <h3 class="accordion-header" id="headingPersonal">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePersonal" aria-expanded="false" aria-controls="collapsePersonal">
+                    <i class="fa-solid fa-user-shield text-primary me-2"></i> Personal Safety &amp; Anti-Harassment
+                  </button>
+                </h3>
+                <div id="collapsePersonal" class="accordion-collapse collapse" aria-labelledby="headingPersonal" data-bs-parent="#safetyAccordion">
+                  <div class="safety-body">
+                    <div class="safety-grid">
+                      <div class="safety-box do">
+                        <h6 class="text-success"><i class="fa-solid fa-check-circle me-1"></i> What to Do</h6>
+                        <ul>
+                          <li>Trust your instincts; head toward populated, well-lit commercial areas.</li>
+                          <li>Share live GPS tracking with trusted emergency contacts.</li>
+                          <li>Use audible personal alarms or loud shouts to draw public attention.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box dont">
+                        <h6 class="text-danger"><i class="fa-solid fa-times-circle me-1"></i> What NOT to Do</h6>
+                        <ul>
+                          <li>Do not accept rides or food from unverified strangers.</li>
+                          <li>Avoid using earphones with noise cancellation in isolated routes.</li>
+                        </ul>
+                      </div>
+                      <div class="safety-box prep">
+                        <h6 class="text-primary"><i class="fa-solid fa-lightbulb me-1"></i> Preparedness &amp; Calling</h6>
+                        <ul>
+                          <li>Women Helpline: <strong>1091</strong> | Child Helpline: <strong>1098</strong>.</li>
+                          <li>National Police Hotline: <strong>112</strong> / <strong>100</strong>.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EMERGENCY CONTACTS DIRECTORY
+         ======================================================================== -->
+    <section class="section-wrapper bg-alt" id="contacts-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-badge"><i class="fa-solid fa-phone-volume"></i> Direct Civic Hotlines</span>
+          <h2 class="section-title">Emergency Contacts</h2>
+          <p class="section-subtitle">
+            One-touch mobile dialing for verified emergency helplines across national jurisdictions.
+          </p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">National Emergency</div>
+              <div class="contact-dial-number">112</div>
+              <div class="small text-secondary mb-3">All-in-one unified civic line</div>
+              <a href="tel:112" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 112</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Police Control</div>
+              <div class="contact-dial-number">100</div>
+              <div class="small text-secondary mb-3">Law enforcement &amp; safety</div>
+              <a href="tel:100" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 100</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Fire Brigade</div>
+              <div class="contact-dial-number">101</div>
+              <div class="small text-secondary mb-3">Fire rescue &amp; structural HAZMAT</div>
+              <a href="tel:101" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 101</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Ambulance Service</div>
+              <div class="contact-dial-number">108</div>
+              <div class="small text-secondary mb-3">Trauma care &amp; medical transport</div>
+              <a href="tel:108" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 108</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Women Helpline</div>
+              <div class="contact-dial-number">1091</div>
+              <div class="small text-secondary mb-3">24/7 anti-harassment support</div>
+              <a href="tel:1091" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 1091</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Child Helpline</div>
+              <div class="contact-dial-number">1098</div>
+              <div class="small text-secondary mb-3">Protection &amp; missing youth</div>
+              <a href="tel:1098" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 1098</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Disaster Helpline</div>
+              <div class="contact-dial-number">1070</div>
+              <div class="small text-secondary mb-3">State &amp; National disaster desks</div>
+              <a href="tel:1070" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 1070</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="contact-card-dial">
+              <div class="fw-bold text-muted small text-uppercase">Power Grid Emergency</div>
+              <div class="contact-dial-number">1912</div>
+              <div class="small text-secondary mb-3">Electricity faults &amp; wire hazards</div>
+              <a href="tel:1912" class="btn-dial-now"><i class="fa-solid fa-phone"></i> Dial 1912</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ABOUT & CONTACT SECTIONS
+         ======================================================================== -->
+    <section class="section-wrapper" id="about-section">
+      <div class="container">
+        <div class="row g-5">
+          <!-- About -->
+          <div class="col-lg-6">
+            <span class="section-badge"><i class="fa-solid fa-circle-info"></i> Project Architecture</span>
+            <h2 class="section-title">About Smart Emergency Response</h2>
+            <p class="text-secondary">
+              <strong>Smart Emergency Response (SER)</strong> is a state-of-the-art emergency incident reporting, tracking, and responder coordination prototype created to showcase how modern web standards enable frictionless civic safety interfaces.
+            </p>
+            <div class="card p-3 mb-3 bg-surface border">
+              <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-layer-group me-2"></i>Core Architecture &amp; Capabilities</h6>
+              <ul class="text-secondary small mb-0 ps-3">
+                <li><strong>100% Frontend Static Architecture:</strong> Completely free of PHP, MySQL, or backend servers — easily deployed to GitHub Pages.</li>
+                <li><strong>Smart Priority Engine:</strong> Client-side algorithmic risk assessment weighting immediate danger, affected headcounts, and severity levels.</li>
+                <li><strong>Geospatial Integration:</strong> Leaflet.js + OpenStreetMap with GPS geolocation and custom station layer markers.</li>
+                <li><strong>Reactive Analytics:</strong> Chart.js telemetry dynamically refreshing upon every incident submission or status shift.</li>
+              </ul>
+            </div>
+            <div class="alert alert-warning border mb-0 small">
+              <i class="fa-solid fa-triangle-exclamation me-1"></i>
+              <strong>Notice:</strong> This website is an educational demonstration prototype. It does not dispatch real-world armed or medical units. During actual emergencies, always call <strong>112</strong>.
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="col-lg-6" id="contact-section">
+            <div class="card p-4 border shadow-sm bg-surface-elevated">
+              <h3 class="fw-bold mb-1 fs-4"><i class="fa-solid fa-envelope me-2 text-primary"></i>Contact Platform Team</h3>
+              <p class="text-muted small mb-3">Have feedback, partnership inquiries, or suggestions for civic response enhancements?</p>
+
+              <form id="generalContactForm" novalidate>
+                <div class="mb-3">
+                  <label for="contactName" class="form-label">Your Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="contactName" placeholder="Citizen Name" required>
+                  <div class="invalid-feedback">Please provide your name.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactEmail" class="form-label">Your Email <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com" required>
+                  <div class="invalid-feedback">Please provide a valid email address.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactSubject" class="form-label">Subject <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="contactSubject" placeholder="Feedback or question" required>
+                  <div class="invalid-feedback">Please provide a subject.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactMessage" class="form-label">Message <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="contactMessage" rows="3" placeholder="Write your message..." required></textarea>
+                  <div class="invalid-feedback">Please write your message.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 fw-bold">
+                  <i class="fa-solid fa-paper-plane me-2"></i> Prepare Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="ser-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <img src="assets/images/logo.svg" alt="SER Logo" width="36" height="36">
+            <span>Smart Emergency Response</span>
+          </div>
+          <p class="text-secondary small mb-3">
+            <strong>Report. Respond. Protect.</strong><br>
+            Empowering citizens and coordinating rapid civic emergency response through modern web technology.
+          </p>
+          <div class="badge bg-secondary text-light">Frontend Demonstration Project</div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#report-section">Report Emergency</a></li>
+            <li><a href="#services-section">Services</a></li>
+            <li><a href="#map-section">Incident Map</a></li>
+            <li><a href="#stats-section">Statistics</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h4 class="footer-heading">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#track-section">Track Incident</a></li>
+            <li><a href="#safety-section">Safety Protocols</a></li>
+            <li><a href="#contacts-section">Emergency Contacts</a></li>
+            <li><a href="#dispatch-section">Response Center</a></li>
+            <li><a href="#about-section">About Platform</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <h4 class="footer-heading">Emergency Hotlines</h4>
+          <div class="d-flex flex-column gap-2 small">
+            <div><i class="fa-solid fa-phone text-danger me-2"></i> National Emergency: <strong>112</strong></div>
+            <div><i class="fa-solid fa-truck-medical text-success me-2"></i> Ambulance / Medical: <strong>108</strong></div>
+            <div><i class="fa-solid fa-fire text-danger me-2"></i> Fire Department: <strong>101</strong></div>
+            <div><i class="fa-solid fa-shield text-primary me-2"></i> Police Control: <strong>100</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer-box text-center">
+        <div class="text-danger fw-bold mb-1"><i class="fa-solid fa-shield-halved me-2"></i>IMPORTANT CIVIC DISCLAIMER</div>
+        <p class="small text-secondary mb-0">
+          This website is a frontend educational simulation and portfolio demonstration. It does not replace governmental emergency telecommunications. Always contact official emergency services (112, 100, 101, 108) during real-life life-threatening events.
+        </p>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 Smart Emergency Response (SER). Static Architecture &bull; GitHub Pages Ready.</div>
+        <div class="d-flex gap-3">
+          <a href="#hero">Back to top <i class="fa-solid fa-arrow-up ms-1"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODALS
+       ======================================================================== -->
+  <!-- 1. Emergency Dial Modal -->
+  <div class="modal fade" id="emergencyDialModal" tabindex="-1" aria-labelledby="emergencyDialModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title fw-bold" id="emergencyDialModalLabel">
+            <i class="fa-solid fa-phone-volume me-2"></i> Urgent Emergency Hotlines
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="small text-muted mb-3">Tap any line below to trigger immediate calling from your mobile device:</p>
+          <div class="list-group">
+            <a href="tel:112" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+              <div>
+                <strong class="text-danger fs-5">112</strong>
+                <div class="small text-secondary">All-in-One National Emergency</div>
+              </div>
+              <span class="btn btn-sm btn-danger"><i class="fa-solid fa-phone"></i> Call</span>
+            </a>
+            <a href="tel:108" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+              <div>
+                <strong class="text-success fs-5">108</strong>
+                <div class="small text-secondary">Ambulance &amp; Emergency Medical</div>
+              </div>
+              <span class="btn btn-sm btn-success"><i class="fa-solid fa-phone"></i> Call</span>
+            </a>
+            <a href="tel:101" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+              <div>
+                <strong class="text-danger fs-5">101</strong>
+                <div class="small text-secondary">Fire &amp; Rescue Brigade</div>
+              </div>
+              <span class="btn btn-sm btn-danger"><i class="fa-solid fa-phone"></i> Call</span>
+            </a>
+            <a href="tel:100" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+              <div>
+                <strong class="text-primary fs-5">100</strong>
+                <div class="small text-secondary">Police Control Room</div>
+              </div>
+              <span class="btn btn-sm btn-primary"><i class="fa-solid fa-phone"></i> Call</span>
+            </a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Submission Success Modal -->
+  <div class="modal fade" id="reportSuccessModal" tabindex="-1" aria-labelledby="reportSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-bold" id="reportSuccessModalLabel">
+            <i class="fa-solid fa-circle-check me-2"></i> Emergency Report Submitted
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <div class="display-6 text-success mb-2"><i class="fa-solid fa-shield-check"></i></div>
+          <h5 class="fw-bold mb-1">Incident Successfully Registered</h5>
+          <p class="text-muted small">Your report has been logged and forwarded to simulated response units.</p>
+
+          <div class="card p-3 bg-surface-secondary border my-3 text-start">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="small text-muted fw-bold text-uppercase">Generated Incident ID:</span>
+              <button type="button" class="btn btn-sm btn-outline-primary py-0 px-2" id="btnCopyIncidentId" title="Copy ID">
+                <i class="fa-regular fa-copy"></i> Copy
+              </button>
+            </div>
+            <div class="fs-4 fw-black text-danger" id="modalIncidentId">SER-2026-XXXXX</div>
+            <hr class="my-2">
+            <div class="row g-1 small">
+              <div class="col-6 text-muted">Category: <strong class="text-primary d-block" id="modalCategory">-</strong></div>
+              <div class="col-6 text-muted">Calculated Priority: <strong class="text-danger d-block" id="modalPriority">-</strong></div>
+              <div class="col-6 text-muted mt-2">Initial Status: <strong class="text-success d-block">Reported</strong></div>
+              <div class="col-6 text-muted mt-2">Timestamp: <strong class="text-body d-block" id="modalTimestamp">-</strong></div>
+            </div>
+          </div>
+
+          <p class="small text-muted mb-0">Use this Incident ID to track response dispatch status at any time.</p>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btnTrackThisIncident">
+            <i class="fa-solid fa-location-crosshairs me-1"></i> Track This Report
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Incident Details Modal (for Dispatcher & Tracking) -->
+  <div class="modal fade" id="incidentDetailsModal" tabindex="-1" aria-labelledby="incidentDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="incidentDetailsModalLabel">
+            <i class="fa-solid fa-file-shield text-danger me-2"></i> Incident Details Dossier
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="incidentDetailsModalBody">
+          <!-- Populated dynamically via script.js -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       TOAST NOTIFICATION CONTAINER
+       ======================================================================== -->
+  <div class="ser-toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ========================================================================
+       JAVASCRIPT SCRIPTS
+       ======================================================================== -->
+  <!-- Bootstrap 5.3 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Leaflet 1.9 JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Chart.js 4.4 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Custom Core Logic JS -->
+  <script src="script.js"></script>
+</body>
+</html>
